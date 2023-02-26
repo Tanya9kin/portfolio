@@ -2,6 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    /> -->
     <link rel="stylesheet" href="./resources/css/style.css" />
     <link
       rel="shortcut icon"
@@ -9,19 +13,29 @@
       type="image/ico"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="./resources/javascript/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/800cbece2c.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="./resources/javascript/main.js" defer></script>
     <title>Tanya Deveykin</title>
   </head>
   <body>
     <!-- navigation bar -->
     <nav>
-      <button id="hamburger"></button>
-      <ul class="nav-list">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#other">Other tid-bits</a></li>
-      </ul>
+      <a href="#" id="logo">Tanya Deveykin</a>
+      <div class="dropdown">
+        <button id="dropdown-btn">
+          <i class="fa-solid fa-bars fa-2xl"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+          <a href="#other">Other tid-bits</a>
+        </div>
+      </div>
     </nav>
     <!-- header with image and name -->
     <header>
@@ -33,17 +47,19 @@
         might look at the code and decide it is absolute shit.
       </p>
       <!-- <span>Read more...</span> -->
-      <a class="link-icon" href="https://github.com/Tanya9kin" target="_blank"
-        ><img
-          src="./resources/images/icons/github-mark/github-mark/github-mark.svg"
-      /></a>
+      <a class="link-icon" href="https://github.com/Tanya9kin" target="_blank">
+        <i class="fa-brands fa-github fa-2xl"></i>
+      </a>
       <a
         class="link-icon"
         href="https://www.linkedin.com/in/tanya-deveykin/"
         target="_blank"
-        ><img
-          src="./resources/images/icons/LinkedIn-Logos/LinkedIn-Logos/LI-In-Bug.png"
-      /></a>
+      >
+        <i class="fa-brands fa-linkedin fa-2xl"></i>
+      </a>
+      <div id="skills-container">
+        <i class="fab"></i>
+      </div>
     </header>
     <!-- Conent of the page  -->
     <main>
@@ -117,7 +133,11 @@
             <h4>Personal Project</h4>
             <button>Description</button>
             <p>The site you are on right now &#x1F44B;</p>
-            <a class="github-project" href="#">See on GitHub</a>
+            <a
+              class="github-project"
+              href="https://github.com/Tanya9kin/portfolio"
+              >See on GitHub</a
+            >
           </article>
         </div>
       </section>
