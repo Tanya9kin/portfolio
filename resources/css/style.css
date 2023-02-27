@@ -3,7 +3,8 @@
 2. Reset
 3. Typography styles
 4. Stractural styles
-5. Module styles
+5. Animations
+6. Module styles
     5.1. Navigation
     5.2. Header
     5.3. Footer
@@ -69,10 +70,25 @@ h4 {
   letter-spacing: 0.05em;
   font-family: "Ruda", Sans-Serif;
   font-size: 2rem;
+  margin: 0.5em 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 200;
 }
 
 p {
   line-height: 1.5em;
+}
+
+li + li::before {
+  content: " | ";
+  margin: 0em 0.5em;
 }
 
 /* 
@@ -80,6 +96,11 @@ p {
 Stractural styles
 ==========================
 */
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
 
 nav {
   display: flex;
@@ -96,10 +117,70 @@ nav {
   margin: 0 1.5rem;
 }
 
+h2 {
+  cursor: pointer;
+}
+
+article {
+  background-color: hsla(208, 100%, 97%, 0.1);
+  border-radius: 0px 5px;
+  padding: 1rem 1rem 1rem 0.5rem;
+  margin: 0.2rem;
+}
+
+button:not(#dropdown-btn) {
+  background-color: hsl(349, 50%, 42%);
+  box-shadow: 0px 2px 2px hsla(0, 0%, 3%, 0.395);
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+button:hover:not(#dropdown-btn) {
+  background-color: hsl(349, 50%, 50%);
+  transition: 200ms ease-in-out;
+}
+
+button:active:not(#dropdown-btn) {
+  transition: 100ms ease-in;
+  box-shadow: none;
+  background-color: hsl(349, 50%, 42%);
+  box-shadow: inset 0px 2px 2px hsla(0, 0%, 3%, 0.395);
+}
+
+.flex-container-horizontal {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.flex-container-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-item {
+  flex-shrink: 1;
+  max-width: 270px;
+  padding: 2rem;
+  padding-top: 0.5rem;
+}
+
+.flex-container-vertical > button {
+  align-self: center;
+  margin-top: auto;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  opacity: 0.8;
+  background-color: hsla(206, 53%, 13%, 0.9);
+}
+
 /* 
 ==========================
-Module styles
-> Navigation
+Animations
 ==========================
 */
 
@@ -113,6 +194,13 @@ Module styles
     right: 0;
   }
 }
+
+/* 
+==========================
+Module styles
+> Navigation
+==========================
+*/
 
 #dropdown-btn {
   cursor: pointer;
@@ -205,6 +293,7 @@ header > .img {
   grid-row: 1 / span 2;
   border-radius: 50%;
   margin-top: 3%;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 3%, 0.395);
 }
 
 header > p {
@@ -263,9 +352,58 @@ header > .bg {
 /* 
 ==========================
 Module styles
-> Footer
+> Sections
 ==========================
 */
+section {
+  background: linear-gradient(
+    to left,
+    hsla(208, 100%, 97%, 0),
+    hsla(208, 100%, 97%, 0.1),
+    hsla(208, 100%, 97%, 0)
+  );
+}
+
+.expendable {
+  display: none;
+}
+
+h2::before {
+  display: inline-block;
+  content: "";
+  border: solid hsla(57, 95%, 90%, 1);
+  filter: drop-shadow(5px 5px 5px hsla(0, 0%, 3%, 0.549));
+  height: 0.7rem;
+  width: 0.7rem;
+  border-width: 0 0.5rem 0.5rem 0;
+  padding: 0.1rem;
+  margin-right: 0.8rem;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  cursor: pointer;
+}
+
+article > img {
+  max-width: 250px;
+}
+
+article > img {
+  filter: grayscale(0.5);
+}
+
+article > img:hover {
+  transition: 200ms ease-in;
+  filter: grayscale(0);
+}
+
+article > p {
+  /* display: none; */
+  opacity: 0.8;
+}
+
+#projects article > h3 {
+  transform: rotate(-2deg);
+}
 
 /* 
 ==========================
