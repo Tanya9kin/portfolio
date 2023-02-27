@@ -9,7 +9,7 @@
     5.3. Footer
     5.4. Projects
 
-Color scheme
+====== Color scheme ======
 dark: hsla(206, 52%, 15%, 1);
     #12293b
 light: hsla(57, 88%, 86%, 1);
@@ -18,6 +18,13 @@ accent options:
 #871C30
 #3B121A
 #236A87
+
+========== fonts ==========
+Font-Family: 'Ruda', Sans-Serif;
+Font-Size: 48px;
+
+Font-Family: 'Roboto Slab', Serif;
+Font-Size: 16px;
 */
 
 /* 
@@ -26,7 +33,7 @@ Global styles
 ==========================
 */
 html {
-  font-family: Helvetica, sans-serif;
+  font-family: "Roboto Slab", Serif;
   font-size: 16px;
   scroll-behavior: smooth;
 }
@@ -55,6 +62,19 @@ Typography styles
 ==========================
 */
 
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: 0.05em;
+  font-family: "Ruda", Sans-Serif;
+  font-size: 2rem;
+}
+
+p {
+  line-height: 1.5em;
+}
+
 /* 
 ==========================
 Stractural styles
@@ -64,8 +84,9 @@ Stractural styles
 nav {
   display: flex;
   position: fixed;
+  z-index: 9;
   width: 100%;
-  background-color: hsla(206, 53%, 15%, 0.9);
+  background-color: hsla(206, 53%, 13%, 0.9);
   justify-content: space-between;
   align-items: center;
 }
@@ -131,8 +152,14 @@ Module styles
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: hsl(206, 53%, 42%);
+.dropdown:hover #dropdown-btn {
+  transition: 200ms ease-in-out;
+  color: hsl(349, 50%, 42%);
+}
+
+#logo {
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
 
 /* 
@@ -141,6 +168,97 @@ Module styles
 > Header
 ==========================
 */
+header {
+  position: relative;
+  margin: 0 auto;
+  padding-top: 4rem;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr;
+  grid-template-rows: 3fr 2fr 1fr;
+  gap: 1rem;
+}
+
+header > h1 {
+  z-index: 1;
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+  align-self: center;
+  width: fit-content;
+  padding: 0 0.5em;
+  margin: 0;
+  font-size: 3rem;
+  transform: rotate(-3deg);
+  color: hsla(57, 95%, 90%, 1);
+  text-shadow: 2px 2px 4px hsla(0, 0%, 3%, 0.395);
+}
+
+header > .img {
+  z-index: 3;
+  background: url("../images/profile-picture.jpg");
+  width: 250px;
+  height: 250px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+  border-radius: 50%;
+  margin-top: 3%;
+}
+
+header > p {
+  z-index: 3;
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 2;
+  align-self: top;
+  padding-top: 3%;
+  margin: 0 auto;
+}
+
+header > .bg {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / span 3;
+  grid-row: 2 / span 2;
+  background-color: rgba(240, 248, 255, 0.075);
+  background: linear-gradient(
+    to left,
+    hsla(208, 100%, 97%, 0),
+    hsla(208, 100%, 97%, 0.1),
+    hsla(208, 100%, 97%, 0)
+  );
+}
+
+.link-icon {
+  filter: drop-shadow(2px 2px 2px hsla(0, 0%, 3%, 0.395));
+}
+
+#my-github {
+  z-index: 3;
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+  justify-self: center;
+  align-self: top;
+}
+
+#my-linkedin {
+  z-index: 3;
+  grid-column: 2 / span 1;
+  grid-row: 3 / span 1;
+  justify-self: center;
+  align-self: top;
+}
+
+.link-icon:hover {
+  transition: 200ms ease-in-out;
+  color: hsl(349, 50%, 42%);
+}
+
+.link-icon:active {
+  filter: drop-shadow(0 0 0 transparent);
+}
 
 /* 
 ==========================

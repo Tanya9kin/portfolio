@@ -2,11 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    /> -->
+    <!-- css -->
     <link rel="stylesheet" href="./resources/css/style.css" />
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"
+      rel="stylesheet"
+    />
+    <!-- icons -->
     <link
       rel="shortcut icon"
       href="./resources/images/icons/icons8-star-filled-16.png"
@@ -21,6 +24,7 @@
     <script src="./resources/javascript/main.js" defer></script>
     <title>Tanya Deveykin</title>
   </head>
+
   <body>
     <!-- navigation bar -->
     <nav>
@@ -39,7 +43,8 @@
     </nav>
     <!-- header with image and name -->
     <header>
-      <img src="./resources/images/profile-picture.jpg" />
+      <div class="bg"></div>
+      <div class="img"></div>
       <h1>Tanya Deveykin</h1>
       <p>
         A software developer passionate about making apps that are great
@@ -47,11 +52,17 @@
         might look at the code and decide it is absolute shit.
       </p>
       <!-- <span>Read more...</span> -->
-      <a class="link-icon" href="https://github.com/Tanya9kin" target="_blank">
+      <a
+        class="link-icon"
+        id="my-github"
+        href="https://github.com/Tanya9kin"
+        target="_blank"
+      >
         <i class="fa-brands fa-github fa-2xl"></i>
       </a>
       <a
         class="link-icon"
+        id="my-linkedin"
         href="https://www.linkedin.com/in/tanya-deveykin/"
         target="_blank"
       >
