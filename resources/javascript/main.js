@@ -30,26 +30,16 @@ const checkValidLink = (button) => {
 
 buttons.forEach(checkValidLink);
 
-// console.log(buttons);
-
-//every expendable article had a sibling h2, a click on which should expand it
-// const expand = () => {
-
-// };
-
 const expendingButtons = Array.from(
   document.getElementsByClassName("expanding")
 );
 
 const expand = (event) => {
-  //   console.log(event.target.nextElementSibling);
   const elementToExpand = event.target.nextElementSibling;
   elementToExpand.style.display = "flex";
 };
 
-// console.log(expendingButtons);
-
+// Adds event listeners for the expanding sections
 expendingButtons.forEach((element) => {
-  //   console.log(element);
   element.addEventListener("click", expand);
 });

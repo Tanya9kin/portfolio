@@ -381,11 +381,19 @@ h2::before {
   margin-right: 0.8rem;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+  transition: transform 200ms ease-in-out;
   cursor: pointer;
+}
+
+h2:hover::before {
+  transition: transform 200ms ease-in-out;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
 article > img {
   max-width: 250px;
+  box-shadow: 2px 2px 3px hsla(0, 0%, 3%, 0.549);
 }
 
 article > img {
