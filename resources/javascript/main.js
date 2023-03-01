@@ -30,16 +30,156 @@ const checkValidLink = (button) => {
 
 buttons.forEach(checkValidLink);
 
-const expendingButtons = Array.from(
-  document.getElementsByClassName("expanding")
-);
-
-const expand = (event) => {
-  const elementToExpand = event.target.nextElementSibling;
-  elementToExpand.style.display = "flex";
+// Make array of expandable sections
+const expandableElementFactory = (section) => {
+  return {
+    heading: section.getElementsByTagName("h2")[0],
+    arrow: section.getElementsByClassName("arrow")[0],
+    rotateArrowDown() {
+      // console.log("trying to change sttyle");
+      if (!this.expanded) {
+        // console.log("this section is not expanded");
+        this.arrow.style.transform = "rotate(45deg)";
+      }
+    },
+    rotateArrowRight() {
+      if (!this.expanded) this.arrow.style.transform = "rotate(-45deg)";
+    },
+    elementToExpand:
+      section.parentElement.getElementsByClassName("expendable")[0],
+    expanded: false,
+    expandOrClose() {
+      if (this.expanded === false) {
+        this.elementToExpand.style.display = "flex"; // TODO: think about changing to "initial"
+        this.rotateArrowDown();
+        this.expanded = true;
+      } else {
+        this.elementToExpand.style.display = "none";
+        this.rotateArrowRight();
+        this.expanded = false;
+      }
+    },
+  };
 };
 
-// Adds event listeners for the expanding sections
-expendingButtons.forEach((element) => {
-  element.addEventListener("click", expand);
+const expandableSections = Array.from(
+  document.getElementsByClassName("expandingHeading")
+).map((section) => expandableElementFactory(section));
+
+expandableSections.forEach(({ heading, arrow }) => {
+  heading.addEventListener("mouseover", (event) => {
+    const target = event.target;
+    expandableSections
+      .filter((section) => target === section.heading)[0]
+      .rotateArrowDown();
+  });
+
+  heading.addEventListener("click", (event) => {
+    const target = event.target;
+    expandableSections
+      .filter((section) => target === section.heading)[0]
+      .expandOrClose();
+  });
+
+  arrow.addEventListener("click", (event) => {
+    const target = event.target;
+    expandableSections
+      .filter((section) => target === section.heading)[0]
+      .expandOrClose();
+  });
+
+  heading.addEventListener("mouseout", (event) => {
+    const target = event.target;
+    expandableSections
+      .filter((section) => target === section.heading)[0]
+      .rotateArrowRight();
+  });
+
+  arrow.addEventListener("mouseover", (event) => {
+    const target = event.target;
+    expandableSections
+      .filter((section) => target === section.arrow)[0]
+      .rotateArrowDown();
+  });
+
+  arrow.addEventListener("mouseout", (event) => {
+    const target = event.target;
+    expandableSections
+      .filter((section) => target === section.arrow)[0]
+      .rotateArrowRight();
+  });
+
+  // arrow.addEventListener(
+  //   "mouseout",
+  //   expandableSections.filter((section) => arrow === section.arrow)[0]
+  //     .rotateArrowRight
+  // );
+  // heading.onClick = expandableSections.filter(
+  //   (section) => heading === section.heading
+  // )[0].expandOrClose;
+  // arrow.onClick = expandableSections.filter(
+  //   (section) => arrow === section.arrow
+  // )[0].expandOrClose;
 });
+
+// expandableSections.forEach(section => {
+//   section.heading.addEventListener()
+// });
+
+// console.log(expandableSections);
+
+// const expendingButtons = Array.from(
+//   document.getElementsByClassName("expanding")
+// );
+
+// const expendingArrows = Array.from(document.getElementsByClassName("arrow"));
+
+// console.log(expendingArrows);
+
+// const rotateArrowDown = (event) => {
+//   console.log(event.target);
+//   event.target.style.transform = "rotate(45deg)";
+// };
+
+// const rotateArrowRight = (event) => {
+//   event.target.style.transform = "rotate(-45deg)";
+// };
+
+// expendingArrows.forEach((arrow) => {
+//   arrow.addEventListener("mouseover", rotateArrowDown);
+//   arrow.addEventListener("mouseout", rotateArrowRight);
+// });
+
+// function that expand and closes the expandable sections
+// const expand = (event) => {
+//   const expandingButton = event.target;
+//   const expandableElement = {
+//     heading: "",
+//     arrow: "",
+//     elementToExpand: "",
+//     expanded: false;
+//   };
+
+//   if (expandingButton.getAttribute("class") === "arrow") {
+//     arrow = expandingButton;
+//   } else {
+//     arrow = expandingButton.getElementsByClassName("arrow");
+//   }
+
+//   heading = expandingButton.parentElement;
+//   elementToExpand =
+//     heading.parentElement.getElementsByClassName("expendable")[0];
+
+//   if (elementToExpand.style.display === "flex") {
+//     elementToExpand.style.display = "none";
+//     arrow.style.transform = "rotate(-45deg)";
+//   } else {
+//     elementToExpand.style.display = "flex";
+//     arrow.style.transform = "rotate(45deg)";
+//   }
+// };
+
+// Adds event listeners for the expanding sections
+// expendingButtons.forEach((element) => {
+//   element.addEventListener("click", expand);
+// });
